@@ -1,0 +1,6 @@
+this compiler c (avr) to send arduino UNO
+
+
+avr-gcc -mmcu=atmega328p -Os -o led.o led.c &&
+avr-objcopy -O ihex -R .eeprom led.o led.hex &&
+avrdude -c arduino -p m328p -P /dev/ttyACM0 -U flash:w:led.hex:i
